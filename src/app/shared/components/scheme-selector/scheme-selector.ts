@@ -10,6 +10,7 @@ import { ColorScheme } from '../../../models/color-scheme.model';
   templateUrl: './scheme-selector.html',
   styleUrl: './scheme-selector.scss',
 })
+
 export class SchemeSelector {
   @Output() schemeChange = new EventEmitter<ColorScheme>();
 

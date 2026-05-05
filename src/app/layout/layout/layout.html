@@ -7,7 +7,7 @@
         <div class="header-title">
           <div class="header-title-container">
             <div class="logo-container">
-              <p-image src="./images/Logo-placeholder.png" alt="Logo"
+              <p-image src="./images/colora-logo.png" alt="Logo"
                 width="48"
                 height="48"></p-image>
             </div>
@@ -39,6 +39,7 @@
           routerLink="/home"
           routerLinkActive
           #rlaHome="routerLinkActive"
+          [text]="rlaHome.isActive ? 'false' : 'true'"
           [severity]="rlaHome.isActive ? 'primary' : 'secondary'"
           class="w-full">
         </p-button>
@@ -49,6 +50,7 @@
           routerLink="/favorites"
           routerLinkActive
           #rlaFavorites="routerLinkActive"
+          [text]="rlaFavorites.isActive ? 'false' : 'true'"
           [severity]="rlaFavorites.isActive ? 'primary' : 'secondary'"
           class="w-full">
         </p-button>
@@ -59,6 +61,7 @@
           routerLink="/my-palettes"
           routerLinkActive
           #rlaPalettes="routerLinkActive"
+          [text]="rlaPalettes.isActive ? 'false' : 'true'"
           [severity]="rlaPalettes.isActive ? 'primary' : 'secondary'"
           class="w-full">
         </p-button>
@@ -71,6 +74,7 @@
           routerLink="/about"
           routerLinkActive
           #rlaAbout="routerLinkActive"
+          [text]="rlaAbout.isActive ? 'false' : 'true'"
           [severity]="rlaAbout.isActive ? 'primary' : 'secondary'"
           class="w-full">
         </p-button>

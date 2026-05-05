@@ -34,7 +34,7 @@ export class ColorPicker {
 
   //LOCAL UI STATE
   h = 0; s = 0; l = 0;
-  hex = '#000000';
+  hex = '#6366F1';
   rgb = { r: 0, g: 0, b: 0 };
 
   private messageService = inject(MessageService);

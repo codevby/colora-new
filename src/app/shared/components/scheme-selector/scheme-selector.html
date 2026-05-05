@@ -1,6 +1,6 @@
 <div class="scheme-selector-wrapper">
   <p-button
-    [outlined]="selectedScheme !== 'analogous'"
+    outlined
     [severity]="selectedScheme === 'analogous' ? 'primary' : 'secondary'"
     label="Analogous"
     icon="pi pi-objects-column"
@@ -9,7 +9,7 @@
   </p-button>
 
   <p-button
-    [outlined]="selectedScheme !== 'complementary'"
+    outlined
     [severity]="selectedScheme === 'complementary' ? 'primary' : 'secondary'"
     label="Complementary"
     icon="pi pi-arrows-h"
@@ -18,7 +18,7 @@
   </p-button>
 
   <p-button
-    [outlined]="selectedScheme !== 'triadic'"
+    outlined
     [severity]="selectedScheme === 'triadic' ? 'primary' : 'secondary'"
     label="Triadic"
     icon="pi pi-share-alt"
@@ -27,7 +27,7 @@
   </p-button>
 
   <p-button
-    [outlined]="selectedScheme !== 'monochromatic'"
+    outlined
     [severity]="selectedScheme === 'monochromatic' ? 'primary' : 'secondary'"
     label="Monochromatic"
     icon="pi pi-align-justify"

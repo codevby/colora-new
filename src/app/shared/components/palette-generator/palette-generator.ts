@@ -6,6 +6,7 @@ import { ColorPicker } from '../color-picker/color-picker';
 import { SchemeSelector } from '../scheme-selector/scheme-selector';
 import { ColorScheme } from '../../../models/color-scheme.model';
 import { ColorService } from '../../../services/color.service';
+import { ButtonModule } from 'primeng/button';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { ColorService } from '../../../services/color.service';
     ColorPicker,
     SchemeSelector,
     DividerModule,
+    ButtonModule
   ],
   templateUrl: './palette-generator.html',
   styleUrl: './palette-generator.scss',

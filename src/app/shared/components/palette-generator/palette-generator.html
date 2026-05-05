@@ -17,7 +17,23 @@
 
   <div class="step-3">
     <span class="txt-h6 step-title">3. Actions</span>
-    <!-- Palettes and Scales -->
+
+    <div class="actions-container">
+      <p-button
+        label="Generate palette"
+        icon="pi pi-palette"
+        severity="primary"
+        (onClick)="onGeneratePalette()">
+      </p-button>
+
+      <p-button
+        label="Clear options"
+        icon="pi pi-trash"
+        outlined
+        severity="primary"
+        (onClick)="onGeneratePalette()">
+      </p-button>
+    </div>
 
   </div>
 
