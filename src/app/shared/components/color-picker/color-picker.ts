@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, inject, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, inject, OnInit, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
@@ -26,22 +26,32 @@ import { TooltipModule } from 'primeng/tooltip';
   templateUrl: './color-picker.html',
   styleUrl: './color-picker.scss',
 })
-export class ColorPicker {
+export class ColorPicker implements OnInit {
   @ViewChild('colorInput') colorInput!: ElementRef<HTMLInputElement>;
   @Output() colorChange = new EventEmitter<string>();
 
   colorMode: ColorMode = 'hex';
 
   //LOCAL UI STATE
-  h = 0; s = 0; l = 0;
+  h = 239; s = 0.83; l = 0.66;
   hex = '#6366F1';
-  rgb = { r: 0, g: 0, b: 0 };
+  rgb = { r: 99, g: 102, b: 241 };
 
   private messageService = inject(MessageService);
   private colorService = inject(ColorService);
 
   public isValidHex = this.colorService.isValidHex;
 
+  ngOnInit(): void {
+    this.colorChange.emit(this.hex);
+  }
+
+  selectAll(event: MouseEvent) {
+    const input = event.target as HTMLInputElement;
+    if (input) {
+      input.select();
+    }
+  }
 
   updateFromHSL() {
     this.hex = this.colorService.hslToHex(this.h, this.s * 100, this.l * 100);
@@ -87,12 +97,6 @@ export class ColorPicker {
     this.s = s;
     this.l = l;
     this.updateFromHSL();
-  }
-
-  openColorPicker(event: MouseEvent) {
-    if ((event.target as HTMLElement).tagName !== 'INPUT') {
-      this.colorInput.nativeElement.click();
-    }
   }
 
   copy(){
