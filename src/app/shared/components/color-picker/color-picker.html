@@ -2,7 +2,8 @@
 <div class="color-input-wrapper">
 
   <div class="color-picker-wrapper">
-    <p-colorpicker class="color-picker"
+    <p-colorpicker
+      class="color-picker"
       [(ngModel)]="hex"
       [style]="{ width: '100%', height: '100%' }"
       (onChange)="onHexChange()"
@@ -19,10 +20,11 @@
   </div>
 
   <p-button
+    pTooltip="Copy"
+    tooltipPosition="top"
     ariaLabel="Copy"
     icon="pi pi-copy"
-    outlined
-    severity="secondary"
+    severity="primary"
     (onClick)="copy()">
   </p-button>
 

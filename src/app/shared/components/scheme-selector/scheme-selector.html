@@ -1,0 +1,37 @@
+<div class="scheme-selector-wrapper">
+  <p-button
+    [outlined]="selectedScheme !== 'analogous'"
+    [severity]="selectedScheme === 'analogous' ? 'primary' : 'secondary'"
+    label="Analogous"
+    icon="pi pi-objects-column"
+    class="w-full"
+    (onClick)="changeScheme('analogous')">
+  </p-button>
+
+  <p-button
+    [outlined]="selectedScheme !== 'complementary'"
+    [severity]="selectedScheme === 'complementary' ? 'primary' : 'secondary'"
+    label="Complementary"
+    icon="pi pi-arrows-h"
+    class="w-full"
+    (onClick)="changeScheme('complementary')">
+  </p-button>
+
+  <p-button
+    [outlined]="selectedScheme !== 'triadic'"
+    [severity]="selectedScheme === 'triadic' ? 'primary' : 'secondary'"
+    label="Triadic"
+    icon="pi pi-share-alt"
+    class="w-full"
+    (onClick)="changeScheme('triadic')">
+  </p-button>
+
+  <p-button
+    [outlined]="selectedScheme !== 'monochromatic'"
+    [severity]="selectedScheme === 'monochromatic' ? 'primary' : 'secondary'"
+    label="Monochromatic"
+    icon="pi pi-align-justify"
+    class="w-full"
+    (onClick)="changeScheme('monochromatic')">
+  </p-button>
+</div>

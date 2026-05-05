@@ -1,0 +1,14 @@
+.scheme-selector-wrapper{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+p-button{
+  width: 100%;
+
+  ::ng-deep .p-button {
+    width: 100%;
+    justify-content: flex-start; // Alinea texto e icono a la izquierda
+  }
+}

@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'shared-color-picker',
@@ -20,6 +21,7 @@ import { MessageService } from 'primeng/api';
     ButtonModule,
     PanelModule,
     InputTextModule,
+    TooltipModule,
   ],
   templateUrl: './color-picker.html',
   styleUrl: './color-picker.scss',
