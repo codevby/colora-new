@@ -1,0 +1,91 @@
+<div class="layout-wrapper">
+  <div class="sidebar">
+
+    <div class="header-nav-wrapper">
+
+      <div class="sidebar-header">
+        <div class="header-title">
+          <div class="header-title-container">
+            <div class="logo-container">
+              <p-image src="./images/Logo-placeholder.png" alt="Logo"
+                width="48"
+                height="48"></p-image>
+            </div>
+            <a href="/home" class="Logo-title">Colora</a>
+          </div>
+
+          @if (isDarkMode()) {
+          <p-button outlined size="small" label icon="pi pi-sun"
+            aria-label="Save"
+            class="theme-btn"
+            (onClick)="toggleTheme()"></p-button>
+          } @else {
+          <p-button outlined size="small" label icon="pi pi-moon"
+            aria-label="Save"
+            class="theme-btn"
+            (onClick)="toggleTheme()"></p-button>
+          }
+        </div>
+
+        <p class="txt-secondary header-tagline">Generate color palettes and
+          scales for your
+          projects.</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <p-button
+          label="Home"
+          icon="pi pi-home"
+          routerLink="/home"
+          routerLinkActive
+          #rlaHome="routerLinkActive"
+          [severity]="rlaHome.isActive ? 'primary' : 'secondary'"
+          class="w-full">
+        </p-button>
+
+        <p-button
+          label="Favorites"
+          icon="pi pi-star"
+          routerLink="/favorites"
+          routerLinkActive
+          #rlaFavorites="routerLinkActive"
+          [severity]="rlaFavorites.isActive ? 'primary' : 'secondary'"
+          class="w-full">
+        </p-button>
+
+        <p-button
+          label="My palettes"
+          icon="pi pi-palette"
+          routerLink="/my-palettes"
+          routerLinkActive
+          #rlaPalettes="routerLinkActive"
+          [severity]="rlaPalettes.isActive ? 'primary' : 'secondary'"
+          class="w-full">
+        </p-button>
+
+        <p-divider />
+
+        <p-button
+          label="About"
+          icon="pi pi-info-circle"
+          routerLink="/about"
+          routerLinkActive
+          #rlaAbout="routerLinkActive"
+          [severity]="rlaAbout.isActive ? 'primary' : 'secondary'"
+          class="w-full">
+        </p-button>
+      </nav>
+
+    </div>
+
+    <div class="sidebar-footer">
+      <p class="footer-text">Made with ❤️ by <a
+          href="https://github.com/codevby"
+          target="_blank">codevby</a></p>
+    </div>
+  </div>
+
+  <div class="main-content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>

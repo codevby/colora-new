@@ -5,6 +5,8 @@ import { definePreset } from '@primeuix/themes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import Aura from '@primeuix/themes/aura';
 
+import { MessageService } from 'primeng/api';
+
 const MyPreset = definePreset(Aura, {
   primitive: {
     fontFamily: 'Inter, sans-serif' // Aquí defines la fuente global
@@ -40,6 +42,7 @@ export const appConfig: ApplicationConfig = {
             darkModeSelector: '.p-dark'
           }
       }
-  })
-  ]
+  }),
+  MessageService
+]
 };
