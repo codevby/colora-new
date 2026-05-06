@@ -5,6 +5,16 @@ import { MaterialPalette, MaterialScaleKey } from '../models/color-palette.model
 @Injectable({ providedIn: 'root' })
 export class ColorService {
 
+  // --- VARIATIONS ---
+  private vary(value: number, variation: number, range: number): number {
+    const delta = (Math.random() * 2 - 1) * range * variation;
+    return value + delta;
+  }
+
+  private varyClamped(value: number, variation: number, range: number, min: number, max: number): number {
+    return this.clamp(this.vary(value, variation, range), min, max);
+  }
+
   // --- VALIDATIONS ---
   isValidHex(hex: string): boolean {
     return /^#?([0-9a-fA-F]{6})$/.test(hex);
@@ -67,13 +77,14 @@ export class ColorService {
   }
 
   // --- GENERATIONS OF PALETTES AND SCHEMES ---
-  generateScheme(hex: string, scheme: ColorScheme): string[] {
+  generateScheme(hex: string, scheme: ColorScheme, variation: number): string[] {
     const { h, s, l } = this.hexToHsl(hex);
+
     switch (scheme) {
-      case 'analogous': return this.generateAnalogous(h, s, l);
-      case 'complementary': return this.generateComplementary(h, s, l);
-      case 'triadic': return this.generateTriadic(h, s, l);
-      case 'monochromatic': return this.generateMonochromatic(h, s);
+      case 'analogous': return this.generateAnalogous(h, s, l, variation);
+      case 'complementary': return this.generateComplementary(h, s, l, variation);
+      case 'triadic': return this.generateTriadic(h, s, l, variation);
+      case 'monochromatic': return this.generateMonochromatic(h, s, variation);
       default: return [];
     }
   }
@@ -98,19 +109,47 @@ export class ColorService {
     return Math.min(100, baseS * (level <= 700 ? 1.1 : 1.2));
   }
 
-  private generateAnalogous(h: number, s: number, l: number) {
-    return [h - 30, h, h + 30].map(hue => this.hslToHex(this.normalizeHue(hue), s, l));
+  private generateAnalogous(h: number, s: number, l: number, variation: number) {
+    return [h - 30, h, h + 30].map(baseHue => {
+      const hue = this.normalizeHue(this.vary(baseHue, variation, 10));
+      const sat = this.varyClamped(s, variation, 10, 0, 100);
+      const lig = this.varyClamped(l, variation, 10, 0, 100);
+
+      return this.hslToHex(hue, sat, lig);
+    });
   }
 
-  private generateComplementary(h: number, s: number, l: number) {
-    return [h, h + 180].map(hue => this.hslToHex(this.normalizeHue(hue), s, l));
+  private generateComplementary(h: number, s: number, l: number, variation: number) {
+    return [0, 180].map(offset => {
+      const hue = this.normalizeHue(
+        this.vary(h + offset, variation, 8)
+      );
+      const sat = this.varyClamped(s, variation, 8, 0, 100);
+      const lig = this.varyClamped(l, variation, 8, 0, 100);
+
+      return this.hslToHex(hue, sat, lig);
+    });
   }
 
-  private generateTriadic(h: number, s: number, l: number) {
-    return [h, h + 120, h + 240].map(hue => this.hslToHex(this.normalizeHue(hue), s, l));
+  private generateTriadic(h: number, s: number, l: number, variation: number) {
+    return [0, 120, 240].map(offset => {
+      const hue = this.normalizeHue(
+        this.vary(h + offset, variation, 10)
+      );
+      const sat = this.varyClamped(s, variation, 10, 0, 100);
+      const lig = this.varyClamped(l, variation, 10, 0, 100);
+
+      return this.hslToHex(hue, sat, lig);
+    });
   }
 
-  private generateMonochromatic(h: number, s: number) {
-    return [15, 30, 45, 60, 75, 90].map(l => this.hslToHex(h, s, l));
+  private generateMonochromatic(h: number, s: number, variation: number) {
+    return [15, 30, 45, 60, 75, 90].map(baseL => {
+      const hue = this.normalizeHue(this.vary(h, variation, 5));
+      const sat = this.varyClamped(s, variation, 5, 0, 100);
+      const lig = this.varyClamped(baseL, variation, 8, 0, 100);
+
+      return this.hslToHex(hue, sat, lig);
+    });
   }
 }

@@ -1,0 +1,21 @@
+<div class="palette-options-wrapper">
+  <div class="header">
+    <span class="txt-secondary"> {{ variationLabel }}</span>
+  </div>
+
+  <div class="row">
+    <p-slider
+      [(ngModel)]="variation"
+      [min]="0"
+      [max]="1"
+      [step]="0.01"
+      (onSlideEnd)="onVariationChange()"
+      styleClass="w-full">
+    </p-slider>
+
+    <span class="txt-secondary variation-value">
+      {{ variation * 100 | number:'1.0-0' }}%
+    </span>
+  </div>
+
+</div>

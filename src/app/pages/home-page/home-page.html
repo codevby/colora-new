@@ -47,12 +47,13 @@
               tooltipPosition="top">
             </p-button>
 
-            <p-button
+            <p-splitbutton
               label="Download"
               icon="pi pi-download"
               outlined
-              severity="secondary">
-            </p-button>
+              severity="secondary"
+              [model]="items">
+            </p-splitbutton>
           </div>
         </div>
         <shared-palette-grid [colors]="currentPalette"></shared-palette-grid>
@@ -65,7 +66,7 @@
       @if (currentMaterialPalette.length > 0) {
       <div class="palette-grid-container">
         <div class="palette-grid-header">
-          <span class="txt-h6">Material Palette preview (Base color)</span>
+          <span class="txt-h6">Material palette preview (Base color)</span>
           <div class="palette-grid-header-actions">
             <p-button
               ariaLabel="Add Favorite"
@@ -76,12 +77,13 @@
               tooltipPosition="top">
             </p-button>
 
-            <p-button
+            <p-splitbutton
               label="Download"
               icon="pi pi-download"
               outlined
-              severity="secondary">
-            </p-button>
+              severity="secondary"
+              [model]="items">
+            </p-splitbutton>
           </div>
         </div>
         <shared-palette-grid

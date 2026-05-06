@@ -7,6 +7,7 @@ import { SchemeSelector } from '../scheme-selector/scheme-selector';
 import { ColorScheme } from '../../../models/color-scheme.model';
 import { ColorService } from '../../../services/color.service';
 import { ButtonModule } from 'primeng/button';
+import { PaletteOptions } from "../palette-options/palette-options";
 
 
 @Component({
@@ -15,8 +16,9 @@ import { ButtonModule } from 'primeng/button';
     ColorPicker,
     SchemeSelector,
     DividerModule,
-    ButtonModule
-  ],
+    ButtonModule,
+    PaletteOptions
+],
   templateUrl: './palette-generator.html',
   styleUrl: './palette-generator.scss',
 })
@@ -26,6 +28,7 @@ export class PaletteGenerator {
 
   selectedColor: string = '#000000';
   selectedScheme: ColorScheme = 'analogous';
+  variation: number = 0.2;
 
   private colorService = inject(ColorService);
 
@@ -35,6 +38,10 @@ export class PaletteGenerator {
 
   onSchemeChange(scheme: ColorScheme) {
     this.selectedScheme = scheme;
+  }
+
+  onVariationChange(variation: number){
+    this.variation = variation;
   }
 
   onGeneratePalette() {
@@ -51,7 +58,8 @@ export class PaletteGenerator {
   generatePalette() {
     const palette = this.colorService.generateScheme(
       this.selectedColor,
-      this.selectedScheme
+      this.selectedScheme,
+      this.variation
     );
 
     console.log('Palette:', palette);
