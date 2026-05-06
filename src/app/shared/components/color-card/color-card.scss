@@ -1,0 +1,35 @@
+.color-card-wrapper {
+  border: 1px solid var(--p-content-border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.color-preview {
+  width: 100%;
+  aspect-ratio: 5 / 2;
+  background-color: #ccc;
+}
+
+.card-info {
+  padding: 0.5rem 0.8rem;
+  text-align: left;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.color-name {
+  margin-top: 4px;
+}

@@ -1,0 +1,9 @@
+<div class="palette-grid-wrapper">
+  <div class="grid-container">
+    @for(color of colors; track $index){
+    <app-color-card
+      [hexColor]="color"
+      [colorName]="color.name"></app-color-card>
+    }
+  </div>
+</div>

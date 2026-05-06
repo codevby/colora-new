@@ -22,6 +22,75 @@
     </div>
   </div>
 
-  <shared-palette-generator></shared-palette-generator>
+  <div class="generator-palettes-wrapper">
+
+    <!-- Palette generator -->
+    <shared-palette-generator
+      (paletteGenerated)="onPaletteGenerated($event)"
+      (MaterialPaletteGenerated)="onMaterialPaletteGenerated($event)"></shared-palette-generator>
+
+    @if (currentPalette.length > 0) {
+    <div class="palettes-grids-wrapper">
+
+      <!-- Palette grid -->
+      @if (currentPalette.length > 0) {
+      <div class="palette-grid-container">
+        <div class="palette-grid-header">
+          <span class="txt-h6">Palette preview</span>
+          <div class="palette-grid-header-actions">
+            <p-button
+              ariaLabel="Add Favorite"
+              icon="pi pi-star"
+              outlined
+              severity="secondary"
+              pTooltip="Add to favorites"
+              tooltipPosition="top">
+            </p-button>
+
+            <p-button
+              label="Download"
+              icon="pi pi-download"
+              outlined
+              severity="secondary">
+            </p-button>
+          </div>
+        </div>
+        <shared-palette-grid [colors]="currentPalette"></shared-palette-grid>
+      </div>
+      }
+
+      <p-divider></p-divider>
+
+      <!-- Material palette grid -->
+      @if (currentMaterialPalette.length > 0) {
+      <div class="palette-grid-container">
+        <div class="palette-grid-header">
+          <span class="txt-h6">Material Palette preview (Base color)</span>
+          <div class="palette-grid-header-actions">
+            <p-button
+              ariaLabel="Add Favorite"
+              icon="pi pi-star"
+              outlined
+              severity="secondary"
+              pTooltip="Add to favorites"
+              tooltipPosition="top">
+            </p-button>
+
+            <p-button
+              label="Download"
+              icon="pi pi-download"
+              outlined
+              severity="secondary">
+            </p-button>
+          </div>
+        </div>
+        <shared-palette-grid
+          [colors]="currentMaterialPalette"></shared-palette-grid>
+      </div>
+      }
+    </div>
+    }
+
+  </div>
 
 </div>

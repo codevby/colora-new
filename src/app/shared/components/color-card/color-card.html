@@ -1,0 +1,21 @@
+<div class="color-card-wrapper">
+  <div
+    class="color-preview"
+    [style.background-color]="hexColor"></div>
+  <div class="card-info">
+    <div class="card-header">
+      <span class="txt-primary hex-code">{{ hexColor }}</span>
+      <p-button
+        outlined
+        severity="secondary"
+        (click)="copy()"
+        pTooltip="Copy"
+        tooltipPosition="top">
+        <i class="pi pi-copy"></i>
+      </p-button>
+    </div>
+    @if (colorName) {
+    <span class="txt-secondary color-name">{{ colorName }}</span>
+    }
+  </div>
+</div>

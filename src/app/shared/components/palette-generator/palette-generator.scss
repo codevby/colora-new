@@ -18,15 +18,6 @@
   padding: 1rem;
 }
 
-.step-2, .step-3 {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
-  gap: 1rem;
-  padding: 0rem 1rem 1rem 1rem;
-}
-
 
 .actions-container{
   display: grid;
@@ -38,7 +29,14 @@
 
     ::ng-deep .p-button {
       width: 100%;
-      justify-content: flex-start; // Alinea texto e icono a la izquierda
+      justify-content: flex-start;
     }
+  }
+}
+
+:host ::ng-deep {
+  .p-divider {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }

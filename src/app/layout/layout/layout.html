@@ -69,6 +69,17 @@
         <p-divider />
 
         <p-button
+          label="User guides"
+          icon="pi pi-book"
+          routerLink="/user-guides"
+          routerLinkActive
+          #rlaUserGuides="routerLinkActive"
+          [text]="rlaUserGuides.isActive ? 'false' : 'true'"
+          [severity]="rlaUserGuides.isActive ? 'primary' : 'secondary'"
+          class="w-full">
+        </p-button>
+
+        <p-button
           label="About"
           icon="pi pi-info-circle"
           routerLink="/about"
